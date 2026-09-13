@@ -222,7 +222,9 @@ async function seedDatabase() {
       email: "alex@example.com",
       password: hashed,
     });
-    console.log("[seed] Demo user → username: alexreader / password: password123");
+    console.log(
+      "[seed] Demo user → username: alexreader / password: password123",
+    );
   }
 }
 

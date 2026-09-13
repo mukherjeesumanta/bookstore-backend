@@ -4,7 +4,7 @@ const path = require("path");
 const { Sequelize } = require("sequelize");
 
 const DB_PATH = path.resolve(
-  process.env.DB_PATH || path.join(__dirname, "../../data/bookstore.db")
+  process.env.DB_PATH || path.join(__dirname, "../../data/bookstore.db"),
 );
 
 // Ensure the data directory exists
@@ -17,7 +17,7 @@ if (!fs.existsSync(dataDir)) {
 const sequelize = new Sequelize({
   dialect: "sqlite",
   storage: DB_PATH,
-  logging: false,           // set to console.log to see generated SQL
+  logging: false, // set to console.log to see generated SQL
 });
 
 module.exports = sequelize;

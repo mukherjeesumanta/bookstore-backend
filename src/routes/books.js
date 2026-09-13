@@ -32,7 +32,7 @@ function formatBook(book) {
     publisher: book.publisher,
     publishedYear: book.publishedYear,
     description: book.description,
-    tags: book.tags,           // already parsed by the model getter
+    tags: book.tags, // already parsed by the model getter
     inStock: book.inStock,
     featured: book.featured,
   };

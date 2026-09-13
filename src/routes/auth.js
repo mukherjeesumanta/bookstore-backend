@@ -82,7 +82,10 @@ router.post(
       .trim()
       .isLength({ min: 3 })
       .withMessage("Username must be at least 3 characters."),
-    body("email").isEmail().normalizeEmail().withMessage("Valid email is required."),
+    body("email")
+      .isEmail()
+      .normalizeEmail()
+      .withMessage("Valid email is required."),
     body("password")
       .isLength({ min: 6 })
       .withMessage("Password must be at least 6 characters."),
@@ -95,7 +98,9 @@ router.post(
       where: { [Op.or]: [{ username }, { email }] },
     });
     if (existing) {
-      return res.status(409).json({ error: "Username or email already taken." });
+      return res
+        .status(409)
+        .json({ error: "Username or email already taken." });
     }
 
     const hashed = await bcrypt.hash(password, 10);
@@ -103,7 +108,7 @@ router.post(
     const token = signToken(user);
 
     return res.status(201).json({ token, user: formatUser(user) });
-  }
+  },
 );
 
 // ---------------------------------------------------------------------------
@@ -133,7 +138,7 @@ router.post(
     const orders = await getUserOrders(user.id);
 
     return res.json({ token, user: formatUser(user, orders) });
-  }
+  },
 );
 
 // ---------------------------------------------------------------------------

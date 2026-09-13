@@ -32,8 +32,8 @@ const User = sequelize.define(
   },
   {
     tableName: "users",
-    underscored: true,      // createdAt → created_at, updatedAt → updated_at
-  }
+    underscored: true, // createdAt → created_at, updatedAt → updated_at
+  },
 );
 
 module.exports = User;

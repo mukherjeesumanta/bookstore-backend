@@ -68,7 +68,7 @@ const Order = sequelize.define(
   {
     tableName: "orders",
     underscored: true,
-  }
+  },
 );
 
 module.exports = Order;

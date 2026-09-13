@@ -98,9 +98,10 @@ router.post(
     } = req.body;
 
     // Totals calculated server-side
-    const subtotal = Math.round(
-      items.reduce((sum, i) => sum + i.price * i.quantity, 0) * 100
-    ) / 100;
+    const subtotal =
+      Math.round(
+        items.reduce((sum, i) => sum + i.price * i.quantity, 0) * 100,
+      ) / 100;
     const shippingCost = shippingMethod === "express" ? 14.99 : 5.99;
     const tax = Math.round(subtotal * 0.08 * 100) / 100;
     const total = Math.round((subtotal + shippingCost + tax) * 100) / 100;
@@ -128,13 +129,13 @@ router.post(
           quantity: i.quantity,
         })),
       },
-      { include: [{ model: OrderItem, as: "items" }] }
+      { include: [{ model: OrderItem, as: "items" }] },
     );
 
     // Reload to ensure eager-loaded items are populated
     await order.reload({ include: [{ model: OrderItem, as: "items" }] });
     return res.status(201).json({ order: formatOrder(order) });
-  }
+  },
 );
 
 // ---------------------------------------------------------------------------

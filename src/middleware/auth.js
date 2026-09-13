@@ -30,11 +30,9 @@ function authenticate(req, res, next) {
  * Sign a new JWT for the given user row.
  */
 function signToken(user) {
-  return jwt.sign(
-    { sub: user.id, username: user.username },
-    JWT_SECRET,
-    { expiresIn: JWT_EXPIRES_IN }
-  );
+  return jwt.sign({ sub: user.id, username: user.username }, JWT_SECRET, {
+    expiresIn: JWT_EXPIRES_IN,
+  });
 }
 
 module.exports = { authenticate, signToken };

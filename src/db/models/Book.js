@@ -73,7 +73,10 @@ const Book = sequelize.define(
         }
       },
       set(val) {
-        this.setDataValue("tags", JSON.stringify(Array.isArray(val) ? val : []));
+        this.setDataValue(
+          "tags",
+          JSON.stringify(Array.isArray(val) ? val : []),
+        );
       },
     },
     inStock: {
@@ -89,7 +92,7 @@ const Book = sequelize.define(
   {
     tableName: "books",
     underscored: true,
-  }
+  },
 );
 
 module.exports = Book;
